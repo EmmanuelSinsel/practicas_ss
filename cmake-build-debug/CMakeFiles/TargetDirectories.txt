@@ -1,0 +1,3 @@
+C:/Users/thega/CLionProjects/practicas/cmake-build-debug/CMakeFiles/practicas.dir
+C:/Users/thega/CLionProjects/practicas/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/thega/CLionProjects/practicas/cmake-build-debug/CMakeFiles/rebuild_cache.dir
