@@ -95,7 +95,7 @@ void find(struct node *node, int key){ //inorder
 }
 
 int main() {
-    struct node *n;
+    struct node *n = (struct node *)malloc(sizeof (struct node));
     //--INSERTAR--
     n = insert(n, 8);
     n = insert(n, 3);
