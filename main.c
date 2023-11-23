@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int lk=0, rk=0;
-
 struct node{
     int key;
     struct node *left,*right;
 };
+
+int lk=0, rk=0;
 
 struct node *new_node(int key){
     struct node *new = (struct node *)malloc(sizeof (struct node));
@@ -82,6 +82,10 @@ void display(struct node *node){
     }
 }
 void find(struct node *node, int key){ //inorder
+    if(node==NULL){
+        printf("%d NO EXISTE EN EL ABB\n",key);
+        return;
+    }
     if(key==node->key){
         display_middle(node);
     }else{
@@ -94,32 +98,59 @@ void find(struct node *node, int key){ //inorder
     }
 }
 
+int validate(struct node *node){
+    if(node != NULL) {
+        struct node *l = node->left;
+        struct node *r = node->right;
+        if (l != NULL) {
+            if (l->key == node->key) {
+                printf("ESTE NO ES UN ARBOL BINARIO DE BUSQUEDA VALIDO\n");
+                return 0;
+            }
+        }
+        if (r != NULL) {
+            if (r->key == node->key) {
+                printf("ESTE NO ES UN ARBOL BINARIO DE BUSQUEDA VALIDO\n");
+                return 0;
+            }
+        }
+        if(validate(node->left)==0){
+            return 0;
+        }
+        if(validate(node->right)==0){
+            return 0;
+        }
+    }
+    if(node == NULL){
+        return 1;
+    }
+    return 1;
+}
+
 int main() {
-    struct node *n;
+    struct node *n = insert(n, 8);
     //--INSERTAR--
-    n = insert(n, 8);
-    n = insert(n, 3);
-    n = insert(n, 1);
-    n = insert(n, 6);
-    n = insert(n, 7);
     n = insert(n, 10);
-    n = insert(n, 14);
-    n = insert(n, 4);
-    n = insert(n, 11);
-    n = insert(n, 15);
-    n = insert(n, 13);
-    n = insert(n, 16);
+    n = insert(n, 8);
+    n = insert(n, 7);
+    n = insert(n, 6);
     n = insert(n, 12);
-    n = insert(n, 17);
-    n = insert(n, 19);
-    printf("--LISTAR--\n");
-    display(n);
-    printf("--ENCONTRAR--\n");
-    find(n,8);
-    find(n,11);
-    find(n,15);
-    printf("--LISTAR DESPUES DE BORRAR--\n");
-    n = delete(n,7);
-    display(n);
+    n = insert(n, 13);
+    n = insert(n, 14);
+    n = insert(n, 16);
+    //n = insert(n, 6);
+    int flag = validate(n);
+    if(flag==1){
+        printf("ESTE ES UN ARBOL BINARIO DE BUSQUEDA VALIDO\n");
+        printf("--LISTAR--\n");
+        display(n);
+        printf("--ENCONTRAR--\n");
+        find(n,8);
+        find(n,11);
+        find(n,15);
+        printf("--LISTAR DESPUES DE BORRAR--\n");
+        n = delete(n,7);
+        display(n);
+    }
     return 0;
 }
