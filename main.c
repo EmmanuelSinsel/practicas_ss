@@ -126,7 +126,7 @@ int validate(struct node *node){
 }
 
 int main() {
-    struct node *n = insert(n, 8);
+    struct node *n = new_node(8);
     //--INSERTAR--
     n = insert(n, 10);
     n = insert(n, 8);
