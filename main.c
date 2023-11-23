@@ -6,8 +6,6 @@ struct node{
     struct node *left,*right;
 };
 
-int lk=0, rk=0;
-
 struct node *new_node(int key){
     struct node *new = (struct node *)malloc(sizeof (struct node));
     new->key=key;
